@@ -7,13 +7,18 @@ title: Home
     <p>여기는 저의 데이터 분석 및 개발 블로그입니다.</p>
 </div>
 
-<h2 class="section-title">최근 게시물</h2>
+<h2 class="section-title">포트폴리오 및 최근 게시물</h2>
 <div class="post-list">
   {% for post in site.posts %}
     <a href="{{ post.url | relative_url }}" class="post-card glass-panel">
-      <h3>{{ post.title }}</h3>
-      <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+      {% if post.image %}
+      <div class="post-image" style="background-image: url('{{ post.image | relative_url }}');"></div>
+      {% endif %}
+      <div class="post-card-content">
+        <h3>{{ post.title }}</h3>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+      </div>
     </a>
   {% endfor %}
 </div>
