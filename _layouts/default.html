@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+    <header class="glass-header">
+        <nav>
+            <a href="{{ '/' | relative_url }}" class="logo">{{ site.title }}</a>
+            <ul class="nav-links">
+                <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                <li><a href="https://github.com/{{ site.author }}" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        {{ content }}
+    </main>
+    <footer>
+        <p>&copy; 2026 {{ site.author }}. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+title: "My Data Analysis Blog"
+author: "randomfosel2"
+description: "Data analysis portfolio and blog"
+permalink: /:year/:month/:day/:title/
+exclude: ["docs", "README.md", ".gitignore"]
