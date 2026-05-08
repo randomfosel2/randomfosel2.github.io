@@ -7,7 +7,43 @@ title: Home
     <p>여기는 저의 데이터 분석 및 개발 블로그입니다.</p>
 </div>
 
-<h2 class="section-title">포트폴리오 및 최근 게시물</h2>
+<h2 class="section-title">포트폴리오</h2>
+<div class="post-list">
+  {% for item in site.data.portfolio %}
+    <div class="post-card glass-panel" onclick="openModal('modal-{{ forloop.index }}')" style="cursor: pointer;">
+      <div class="post-image" style="background-image: url('{{ item.image | relative_url }}');"></div>
+      <div class="post-card-content">
+        <h3>{{ item.title }}</h3>
+        <p class="post-excerpt">{{ item.summary }}</p>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-{{ forloop.index }}" class="modal">
+      <div class="modal-content glass-panel">
+        <span class="close-btn" onclick="closeModal('modal-{{ forloop.index }}')">&times;</span>
+        <div class="modal-image" style="background-image: url('{{ item.image | relative_url }}');"></div>
+        <div class="modal-body">
+          <h2>{{ item.title }}</h2>
+          <p class="modal-summary"><strong>개요:</strong> {{ item.summary }}</p>
+          <p class="modal-desc"><strong>메인:</strong> {{ item.main_description }}</p>
+          
+          <h3 class="modal-subtitle">개발 환경</h3>
+          <ul class="modal-list">
+            <li><strong>언어:</strong> {{ item.env_lang }}</li>
+            <li><strong>라이브러리:</strong> {{ item.env_lib }}</li>
+            <li><strong>도구:</strong> {{ item.env_tools }}</li>
+            <li><strong>데이터 출처:</strong> {{ item.data_source }}</li>
+          </ul>
+          
+          <a href="{{ item.link }}" target="_blank" class="modal-btn">저장소 보러가기</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<h2 class="section-title" style="margin-top: 4rem;">최근 게시물</h2>
 <div class="post-list">
   {% for post in site.posts %}
     <a href="{{ post.url | relative_url }}" class="post-card glass-panel">
@@ -22,3 +58,23 @@ title: Home
     </a>
   {% endfor %}
 </div>
+
+<script>
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+</script>
