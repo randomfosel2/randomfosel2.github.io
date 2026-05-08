@@ -6,4 +6,4 @@
   env_lib: "pandas"
   env_tools: "Tableau"
   data_source: "Kaggle/Google"
-  link: "/project/2026/05/08/project-01-instagram-influencer.html"
+  link: "https://github.com/randomfosel2/project_01_instagram_influencer"
